@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const User = require('../models/Model');
+const User = require('../models/User');
 
 const getAllUsers = async (req, res, next) => {
     let users;
@@ -30,7 +30,8 @@ const signup = async (req, res, next) => {
     const user = new User({
         name,
         email,
-        password: hashPassword
+        password: hashPassword,
+        blogs: []
     })
     try {
         await user.save();

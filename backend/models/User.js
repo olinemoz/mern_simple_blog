@@ -14,7 +14,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 6
-    }
+    },
+    blogs: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "Blog",
+            required: true
+        }
+    ]
 }, {
     timestamps: true
 })
