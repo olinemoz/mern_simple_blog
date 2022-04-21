@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {Box, Button, TextField, Typography} from "@mui/material";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {useNavigate} from 'react-router-dom'
+import {login} from "../features/auth/authSlice";
 
 const Auth = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -17,9 +23,30 @@ const Auth = () => {
             [name]: value
         })
     }
+
+    const sendRequest = async (type) => {
+        const response = await axios.post(`http://localhost:5000/api/user/${type}`, {
+            name: user.name,
+            email: user.email,
+            password: user.password
+        }).catch((error) => console.log(error))
+        const data = await response.data;
+        return data;
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
-        console.log("New User: ",user);
+        if (isSignup) {
+            sendRequest("signup")
+                .then(() => dispatch(login()))
+                .then(() => navigate('/blogs'))
+                .then((data) => console.log(data))
+        } else {
+            sendRequest("login")
+                .then(() => dispatch(login()))
+                .then(() => navigate('/blogs'))
+                .then((data) => console.log(data))
+        }
     }
 
     return (

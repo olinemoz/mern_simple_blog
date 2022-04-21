@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {AppBar, Box, Button, Tab, Tabs, Toolbar, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../features/auth/authSlice";
 
 const Header = () => {
     const isLoggedIn = useSelector(state => state.isLoggedIn)
     const [value, setValue] = useState(1);
+    const dispatch = useDispatch();
 
     return (
         <AppBar
@@ -52,6 +54,8 @@ const Header = () => {
                             <Button
                                 variant="outlined"
                                 sx={{margin: 1, borderRadius: 10, color: "white"}}
+                                onClick={() => dispatch(logout())}
+                                LinkComponent={Link} to="/auth"
                             >
                                 Logout
                             </Button>
