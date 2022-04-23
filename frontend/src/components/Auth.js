@@ -38,14 +38,14 @@ const Auth = () => {
         event.preventDefault();
         if (isSignup) {
             sendRequest("signup")
+                .then(data => localStorage.setItem("userId",data.user._id))
                 .then(() => dispatch(login()))
                 .then(() => navigate('/blogs'))
-                .then((data) => console.log(data))
         } else {
             sendRequest("login")
+                .then(data => localStorage.setItem("userId",data.user._id))
                 .then(() => dispatch(login()))
                 .then(() => navigate('/blogs'))
-                .then((data) => console.log(data))
         }
     }
 
