@@ -3,7 +3,7 @@ import axios from "axios";
 import BlogCard from "./BlogCard";
 
 const UserBlogs = () => {
-    const [blogs, setBlogs] = useState([]);
+    const [user, setUser] = useState([]);
     const userId = localStorage.getItem('userId');
     const sendRequest = async () => {
         const response = await axios.get(`http://localhost:5000/api/blog/user/${userId}`)
@@ -11,20 +11,23 @@ const UserBlogs = () => {
         const data = await response.data;
         return data;
     }
+
     useEffect(() => {
-        sendRequest().then(data => setBlogs(data.blogs.blogs))
+        sendRequest().then(data => setUser(data.blogs))
     }, [])
 
     return (
         <div>
             {
-                blogs && blogs.map((blog, index) => (
+                user && user.blogs && user.blogs.map((blog, index) => (
                     <BlogCard
                         key={index}
+                        id={blog._id}
+                        isUser={true}
                         title={blog.title}
                         description={blog.description}
-                        imageURl={blog.image}
-                        name={blog.user.name}
+                        image={blog.image}
+                        name={user.name}
                     />
                 ))
             }

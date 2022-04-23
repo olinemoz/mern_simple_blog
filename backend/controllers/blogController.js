@@ -52,13 +52,14 @@ const addBlog = async (req, res, next) => {
 }
 
 const updateBlog = async (req, res, next) => {
-    const {title, description} = req.body;
+    const {title, description, image} = req.body;
     const blogId = req.params.id;
     let blog;
     try {
         blog = await Blog.findByIdAndUpdate(blogId, {
             title,
-            description
+            description,
+            image
         })
     } catch (e) {
         console.log("Error in updateBlog", e);
