@@ -5,7 +5,7 @@ import BlogCard from "./BlogCard";
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
     const sendRequest = async () => {
-        const response = await axios.get(`http://localhost:5000/api/blog`).catch(error => console.error(error))
+        const response = await axios.get(`https://mern-simple-blog-server.herokuapp.com/api/blog`).catch(error => console.error(error))
         const data = await response.data;
         return data;
     }

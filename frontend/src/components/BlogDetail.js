@@ -10,13 +10,13 @@ const BlogDetail = () => {
     const navigate = useNavigate()
     const {id} = useParams();
     const fetchDetails = async () => {
-        const response = await axios.get(`http://localhost:5000/api/blog/${id}`)
+        const response = await axios.get(`https://mern-simple-blog-server.herokuapp.com/api/blog/${id}`)
             .catch(error => console.error(error))
         const data = await response.data;
         return data;
     }
     const updateDetails = async () => {
-        const response = await axios.put(`http://localhost:5000/api/blog/update/${id}`,{
+        const response = await axios.put(`https://mern-simple-blog-server.herokuapp.com/api/blog/update/${id}`,{
             title: updateBlog.title,
             description: updateBlog.description,
             image: updateBlog.image

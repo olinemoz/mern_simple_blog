@@ -6,7 +6,7 @@ const UserBlogs = () => {
     const [user, setUser] = useState([]);
     const userId = localStorage.getItem('userId');
     const sendRequest = async () => {
-        const response = await axios.get(`http://localhost:5000/api/blog/user/${userId}`)
+        const response = await axios.get(`https://mern-simple-blog-server.herokuapp.com/api/blog/user/${userId}`)
             .catch(error => console.log(error));
         const data = await response.data;
         return data;

@@ -11,7 +11,7 @@ const BlogCard = ({id, title, description, image, name, isUser}) => {
         navigate(`/myBlogs/${id}`)
     }
     const deleteRequest = async () => {
-        const response = await axios.delete(`http://localhost:5000/api/blog/${id}`)
+        const response = await axios.delete(`https://mern-simple-blog-server.herokuapp.com/api/blog/${id}`)
             .catch(error => console.log(error));
         const data = await response.data;
         return data;

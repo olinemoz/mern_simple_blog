@@ -25,7 +25,7 @@ const AddBlog = () => {
     const userId = localStorage.getItem("userId")
     const sendRequest = async () => {
         const {title, description, imageURL} = postBlog;
-        const response = await axios.post(`http://localhost:5000/api/blog/add`, {
+        const response = await axios.post(`https://mern-simple-blog-server.herokuapp.com/api/blog/add`, {
             title,
             description,
             image: imageURL,

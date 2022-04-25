@@ -2,7 +2,7 @@
   "name": "mern_simple_blog",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn start\""
+    "dev": "concurrently \"cd backend && yarn start-dev\" \"cd frontend && yarn start\""
   },
   "repository": "https://github.com/olinemoz/mern_simple_blog.git",
   "author": "olinemazumder <olinemozumder@gmail.com>",
