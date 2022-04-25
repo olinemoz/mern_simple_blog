@@ -13,6 +13,10 @@ app.use([express.json(), cors()])
 //Route Integration
 app.use(routes)
 
+app.get("/", (req, res) => {
+    res.send("Hello")
+})
+
 app.listen(PORT, () => {
     console.log("Server listening on port",PORT)
 })
